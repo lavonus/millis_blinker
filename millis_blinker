@@ -1,0 +1,27 @@
+#include <Arduino.h>
+const int millisInterval = 1000;
+unsigned long previousMillis = 0;
+int ledpin = 2;
+boolean flag = 0;
+
+void setup() {
+  pinMode(ledpin,OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+unsigned long currentMillies = millis();
+if(currentMillies - previousMillis >= millisInterval){
+  if(flag == 0){
+    digitalWrite(ledpin,HIGH);
+    flag = 1;
+  previousMillis = currentMillies;
+  }
+  else{
+    digitalWrite(ledpin,LOW);
+    flag = 0;
+    previousMillis = currentMillies;
+  }
+}
+    
+}
